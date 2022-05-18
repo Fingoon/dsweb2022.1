@@ -16,8 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from dsweb_atividade1.views import home
+from dsweb_geral.views import index, detail, results, vote
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('atividade1/', home)
+    path('atividade1/', home, name='atividade1')
+    path('', index, name='index')
+    # ex.: /
+    path('enquete/<int:question_id>', detail, name='detail')
+    # ex.: /enquete/4
+    path('enquete/<int:question_id>/results/', results, name='results')
+    # ex.: /enquete/4/results/
+    path('enquete/<int:question_id>/vote/', vote, name='vote')
+    # ex.: /enquete/4/vote/   
 ]

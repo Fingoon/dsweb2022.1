@@ -20,13 +20,10 @@ from dsweb_geral.views import index, detail, results, vote
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('atividade1/', home, name='atividade1')
-    path('', index, name='index')
-    # ex.: /
-    path('enquete/<int:question_id>', detail, name='detail')
-    # ex.: /enquete/4
-    path('enquete/<int:question_id>/results/', results, name='results')
-    # ex.: /enquete/4/results/
-    path('enquete/<int:question_id>/vote/', vote, name='vote')
-    # ex.: /enquete/4/vote/   
+    path('atividade1/', home, name='atividade1'),
+    path('', index, name='index'),
+    path('enquete/<int:question_id>', detail, name='detail'),
+    path('enquete/<int:question_id>/results/', results, name='results'),
+    path('enquete/<int:question_id>/vote/', vote, name='vote'),
+
 ]

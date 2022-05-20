@@ -16,7 +16,7 @@ def detail(request, question_id):
         question = Question.objects.get(pk=question_id)
     except Question.DoesNotExist:
         raise Http404("Question does not exist")
-    return HttpResponse(template.render({'question':question}))
+    return HttpResponse(template.render({'question':question},request))
 
 def results(request, question_id):
     response = "Resultados da questão %s."

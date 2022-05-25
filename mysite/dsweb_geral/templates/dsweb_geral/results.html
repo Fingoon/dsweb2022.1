@@ -14,7 +14,7 @@
         <li>{{ choice.choice_text }} -- {{ choice.votes }} voto{{ choice.votes|pluralize }}</li>
     {% endfor %}
     </ul>
-
+    <a href="{% url 'index' %}"> Principal | </a>
     <a href="{% url 'detail' question.id %}"> Votar novamente </a>
 </body>
 </html>

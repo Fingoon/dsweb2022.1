@@ -20,7 +20,7 @@ from dsweb_geral.views import index, detail, results, vote
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('atividade1/', home, name='atividade1'),
     path('', index, name='index'),
     path('enquete/<int:question_id>/', detail, name='detail'),

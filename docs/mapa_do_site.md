@@ -14,7 +14,6 @@ flowchart TD
   detail -- Clicou no link Principal--> index
   detail -- Votar novamente--> vote
   vote -. Redirecionamento HTTP .-> results
-  vote --Retornar a pagina inicial s/ voto--> index
   results --Retornar a pagina inicial-->index
   results --Votar novamente-->vote
 ```

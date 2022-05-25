@@ -11,7 +11,7 @@ flowchart TD
   index -- Clicou em uma enquete--> detail
   index -- Clicou em uma admin--> admin
   index -- Resultados parciais--> results
-  detail -- Clicou no link "Principal" --> index
+  detail -- Clicou no link Principal--> index
   detail -- Votar novamente--> vote
   vote -. Redirecionamento HTTP .-> results
   vote --Retornar a pagina inicial s/ voto--> index

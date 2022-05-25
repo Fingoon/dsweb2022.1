@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, Http404
-from .models import Question
-from django.template import loader
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse
+from .models import Question, Choice
 
 '''
 def index(request):
@@ -29,9 +29,19 @@ def detail(request, question_id):
     return render(request,'dsweb_geral/detail.html',{'question': question})
 
 def results(request, question_id):
-    response = "Resultados da questão %s."
-    return HttpResponse(response % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'dsweb_geral/results.html', {'question':question})
 
 def vote(request, question_id):
-    response = "Votação para a questão %s."
-    return HttpResponse(response % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        id_choice = request.POST['choice']
+        selected_choice = question.choice_set.get(pk=id_choice)
+    except (KeyError, Choice.DoesNotExist):
+        contexto = {'question':question, 'error_message':"Você não selecionou uma opção"}
+        return render(request,'dsweb_geral/detail.html', contexto)
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        return HttpResponseRedirect(reverse('results',args=(question_id,)))
+

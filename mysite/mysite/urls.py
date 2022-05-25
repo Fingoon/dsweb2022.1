@@ -18,6 +18,7 @@ from django.urls import path
 from dsweb_atividade1.views import home
 from dsweb_geral.views import index, detail, results, vote
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('atividade1/', home, name='atividade1'),

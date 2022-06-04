@@ -7,13 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <a href= "{% url 'index' %}">Pagina principal</a>
+    <a href= "{% url 'dsweb_geral:index' %}">Pagina principal</a>
     <h1>{{ question.question_text}}</h1>
     {% if error_message %}
         <p><strong>{{ error_message }}</strong></p>
     {% endif %}
     <u><strong>Choose your choice!</strong></u>
-    <form action="{% url 'vote' question.id %}" method="post">
+    <form action="{% url 'dsweb_geral:vote' question.id %}" method="post">
     {% csrf_token %}
     {% for choice in question.choice_set.all %}
         <input type="radio" name="choice" id="choice{{ forloop.counter }}" value ="{{ choice.id }}">

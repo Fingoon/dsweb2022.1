@@ -11,8 +11,8 @@
     {% if latest_question_list %}
         <ul>
         {% for question in latest_question_list %}
-            <li><a href="{% url 'detail' question.id %}">
-                {{ question.question_text }} | </a><a href="{% url 'results' question.id %}"> (Resultado Parcial)</a></li>
+            <li><a href="{% url 'dsweb_geral:detail' question.id %}">
+                {{ question.question_text }} | </a><a href="{% url 'dsweb_geral:results' question.id %}"> (Resultado Parcial)</a></li>
         {% endfor %}
         </ul>
     {% else %}

@@ -5,7 +5,7 @@ from .models import Question, Choice
 
 '''
 def index(request):
-    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    latest_question_list = Question.objects.order_by('-pub_date')[:25]
     template = loader.get_template('dsweb_geral/index.html')
     context = {'latest_question_list': latest_question_list}
     return HttpResponse(template.render(context, request))

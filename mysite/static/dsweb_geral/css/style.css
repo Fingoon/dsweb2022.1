@@ -1,8 +1,36 @@
 body {
-    background: white url("../images/background.gif.jpg") no-repeat;
-
+    background: white url("../images/background.gif") no-repeat;
+    height: 100vh;
 }
 
 li a{
-    color: rgb(229, 17, 49);
+    color: rgb(47,79,79);
+}
+.center {
+    border-style: ridge;
+    height: 200vh;
+    text-align:center;
+    max-width: 600px;
+    max-height: 300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+ul{
+    font-size: 19px;
+    text-align: left;
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+li{
+    text-align: left;
+}
+
+.links{
+    display: inline-block;
 }

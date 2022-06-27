@@ -10,19 +10,25 @@
     <title>Document</title>
 </head>
 <body>
-    <a href= "{% url 'dsweb_geral:index' %}">Pagina principal</a>
-    <h1>{{ question.question_text}}</h1>
-    {% if error_message %}
-        <p><strong>{{ error_message }}</strong></p>
-    {% endif %}
-    <u><strong>Choose your choice!</strong></u>
-    <form action="{% url 'dsweb_geral:vote' question.id %}" method="post">
-    {% csrf_token %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value ="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text}}</label><br>
-    {% endfor %}
-    <input type="submit" value="Vote">
-    </form>
+    <div class="center">
+        <a href= "{% url 'dsweb_geral:index' %}">Pagina principal</a>
+        <h2>{{ question.question_text}}</h2>
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <u><strong>Choose your choice!</strong></u>
+        <form action="{% url 'dsweb_geral:vote' question.id %}" method="post">
+        {% csrf_token %}
+        <ul class="none">
+        {% for choice in question.choice_set.all %}
+            <li>
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value ="{{ choice.id }}">
+                <label for="choice{{ forloop.counter }}">{{ choice.choice_text}}</label><br>
+            </li>
+        {% endfor %}
+        </ul>
+        <input type="submit" value="Vote">
+        </form>
+    </div>
 </body>
 </html>

@@ -10,14 +10,18 @@
     <title>Document</title>
 </head>
 <body>
-    <u><strong>RESULTADO DA QUESTÃO:</strong></u>
-    <h1>{{ question.question_text}}</h1>
-    <ul>
-    {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }} -- {{ choice.votes }} voto{{ choice.votes|pluralize }}</li>
-    {% endfor %}
-    </ul>
-    <a href="{% url 'dsweb_geral:index' %}"> Principal | </a>
-    <a href="{% url 'dsweb_geral:detail' question.id %}"> Votar novamente </a>
+    <div class="center">
+        <u>RESULTADO DA QUESTÃO:</u>
+        <h2>{{ question.question_text}}</h2>
+        <ul>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }} -- {{ choice.votes }} voto{{ choice.votes|pluralize }}</li>
+        {% endfor %}
+        </ul>
+        <div class="links">
+            <a href="{% url 'dsweb_geral:index' %}"> Principal | </a>
+            <a href="{% url 'dsweb_geral:detail' question.id %}"> Votar novamente </a>
+        </div>
+    </div>
 </body>
 </html>

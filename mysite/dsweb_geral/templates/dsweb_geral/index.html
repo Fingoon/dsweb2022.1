@@ -9,17 +9,19 @@
     <title>Document</title>
 </head>
 <body>
-    <u><strong>ENQUETE</strong></u>
-    {% if latest_question_list %}
-        <ul>
-        {% for question in latest_question_list %}
-            <li><a href="{% url 'dsweb_geral:detail' question.id %}">
-                {{ question.question_text }} | </a><a href="{% url 'dsweb_geral:results' question.id %}"> (Resultado Parcial)</a></li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        <p>Nenhuma questão disponível</p>
-    {% endif %}
-    <a href="admin/">Admin</a>
+    <div class="center">
+        <h1>ENQUETE</h1>
+        {% if latest_question_list %}
+            <ul>
+            {% for question in latest_question_list %}
+                <li><a href="{% url 'dsweb_geral:detail' question.id %}">
+                    {{ question.question_text }} | </a><a href="{% url 'dsweb_geral:results' question.id %}"> (Resultado Parcial)</a></li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nenhuma questão disponível</p>
+        {% endif %}
+        <a href="admin/">Admin</a>
+    </div>
 </body>
 </html>

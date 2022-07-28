@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'dsweb_atividade1',
     'dsweb_geral',
+    'plataforma'
 ]
 
 MIDDLEWARE = [

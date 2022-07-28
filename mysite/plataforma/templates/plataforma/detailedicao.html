@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="center">
+        {% if request.user.colunista %}
+            <li><a href="{% url 'plataforma:logout' %}">Logout</a></li>
+        {% endif %}
+        <li><a href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></li>
+        {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+        {% endif %}
+        <h1>Edição {{edicao.texto}}</h1>
+        <h5>Colunista autor da edição: {{edicao.colunista.user.username}}</h5>
+        <h4><strong>Noticias:</strong></h4>
+        {% for noticia in edicao.noticia_set.all %}
+            <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</li>
+        {% endfor %}
+    </div>
+    <br>
+    {% if request.user.colunista %}
+        <a href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a>
+    {% else %}
+        <a href="{% url 'plataforma:login'%}">Faça login para cadastrar uma noticia</a>
+    {% endif %}
+</body>
+</html>

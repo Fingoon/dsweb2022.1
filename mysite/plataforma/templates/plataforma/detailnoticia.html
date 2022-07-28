@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'plataforma/css/style.css' %}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,16 +20,17 @@
         {% if error_message %}
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
-        <u><strong>COMENTARIOS:</strong></u>
+        <h2>Comentarios:</h2>
+        <ul>
         {% for comentario in noticia.comentario_set.all %}
             <li>{{ comentario.texto }} - Colunista:{{comentario.colunista.user.username}} </li>
         {% endfor %}
+        </ul>
+        {% if request.user.colunista %}
+            <li><a href="{% url 'plataforma:cadastrocomentario' noticia.id %}">Cadastrar novo comentario</a></li>
+        {% else %}
+            <li><a href="{% url 'plataforma:login'%}">Faça login para cadastrar um comentario</a></li>
+        {% endif %}
     </div>
-    <br>
-    {% if request.user.colunista %}
-        <li><a href="{% url 'plataforma:cadastrocomentario' noticia.id %}">Cadastrar novo comentario</a></li>
-    {% else %}
-        <li><a href="{% url 'plataforma:login'%}">Faça login para cadastrar um comentario</a></li>
-    {% endif %}
 </body>
 </html>

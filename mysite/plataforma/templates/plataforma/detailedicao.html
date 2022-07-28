@@ -1,3 +1,5 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'plataforma/css/style.css' %}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,16 +19,18 @@
         {% endif %}
         <h1>Edição {{edicao.texto}}</h1>
         <h5>Colunista autor da edição: {{edicao.colunista.user.username}}</h5>
-        <h4><strong>Noticias:</strong></h4>
+        <h2><strong>Noticias:</strong></h2>
+        <ul>
         {% for noticia in edicao.noticia_set.all %}
             <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</li>
         {% endfor %}
+        </ul>
+        {% if request.user.colunista %}
+            <li><a href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a></li>
+        {% else %}
+            <li><a href="{% url 'plataforma:login'%}">Faça login para cadastrar uma noticia</a></li>
+        {% endif %}
     </div>
-    <br>
-    {% if request.user.colunista %}
-        <a href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a>
-    {% else %}
-        <a href="{% url 'plataforma:login'%}">Faça login para cadastrar uma noticia</a>
-    {% endif %}
+
 </body>
 </html>

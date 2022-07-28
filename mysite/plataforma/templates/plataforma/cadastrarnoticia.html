@@ -1,7 +1,10 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'plataforma/css/style.css' %}"/>
 {% block title %}Login{% endblock %}
 {% block content %}
 <body>
     <main>
+        <div class="center">
         <p>Cadastre uma noticia na edição {{edicao.texto}}</p>
         <form action="{% url 'plataforma:cadastronoticia' edicao.id %}" method="POST" id="cadastronoticia">
             {% csrf_token %}
@@ -10,6 +13,7 @@
             <input type="submit" value="Cadastrar noticia">
             <input type="hidden" name="next" value="{{ next }}">
         </form>
+    </div>
     </main>
 </body>
 {% endblock %}

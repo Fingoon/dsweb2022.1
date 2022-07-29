@@ -19,11 +19,23 @@
         {% endif %}
         <p><a class="admin" href="{% url 'plataforma:cadastroedicao' %}">Cadastrar nova edição</a></p>
         </ul>
-        <h1>EDIÇÕES:</h1>
         {% if edicao_list %}
+            <h1>ULTIMA EDIÇÃO:</h1>
+            {% if ultima_edicao %}
+                <ul>
+                {% for edicao in ultima_edicao %}
+                    <li><a href="{% url 'plataforma:detailedicao' edicao.id %}">{{ edicao.texto }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <h1>OUTRAS EDIÇÕES RECENTES:</h1>
             <ul>
-            {% for edicao in edicao_list %}
-                <li><a href="{% url 'plataforma:detailedicao' edicao.id %}">{{ edicao.texto }}</a></li>
+            {% for edicao2 in ultima_edicao %}
+                {% for edicao in edicao_list %}
+                    {% if edicao != edicao2 %}
+                    <li><a href="{% url 'plataforma:detailedicao' edicao.id %}">{{ edicao.texto }}</a></li>
+                    {% endif %}
+                {% endfor %}
             {% endfor %}
             </ul>
             <h1>NOTICIAS RECENTES:</h1>

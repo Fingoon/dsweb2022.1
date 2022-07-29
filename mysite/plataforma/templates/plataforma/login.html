@@ -5,19 +5,23 @@
 <body>
     <main>
         <div class="center">
-        <p>Faça login na sua conta</p>
+        <p class="admin">Faça login na sua conta</p>
         <form action="{% url 'plataforma:login' %}" method="POST" id="login">
             {% csrf_token %}
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
             {% endif%}
+<<<<<<< Updated upstream
             <label for="username">Username</label>
+=======
+            <label class="admin" for="username">Username</label>
+>>>>>>> Stashed changes
             <input type="username" name="username" id="username" placeholder="Digite seu username"  required>
-            <label for="senha">Senha</label>
+            <label class="admin" for="senha">Senha</label>
             <input type="password" name="senha" id="senha" placeholder="Digite sua senha"  required>
             <input type="submit" value="Entrar">
         </form>
-        <p>Não tem uma conta? <a href="{%url 'plataforma:cadastrocolunista'%}">Cadastrar-se</a></p>
+        <p class="admin">Não tem uma conta? <a href="{%url 'plataforma:cadastrocolunista'%}">Cadastrar-se</a></p>
         </div>
     </main>
 </body>

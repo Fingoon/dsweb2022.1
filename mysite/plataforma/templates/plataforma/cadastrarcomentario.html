@@ -5,10 +5,10 @@
 <body>
     <main>
         <div class="center">
-        <p>Cadastre um comentario na noticia: {{noticia.texto}}</p>
+        <p class="admin">Cadastre um comentario na noticia: {{noticia.texto}}</p>
         <form action="{% url 'plataforma:cadastrocomentario' noticia.id %}" method="POST" id="cadastrocomentario">
             {% csrf_token %}
-            <label for="texto">Comentario:</label>
+            <label class="admin" for="texto">Comentario:</label>
             <input type="texto" name="texto" id="texto" placeholder="Digite seu comentario"  required>
             <input type="submit" value="Comentar">
             {% if request.GET.next %}

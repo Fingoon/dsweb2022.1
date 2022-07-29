@@ -5,10 +5,10 @@
 <body>
     <main>
         <div class="center">
-        <p>Cadastre uma nova edição!</p>
+        <p class="admin">Cadastre uma nova edição!</p>
         <form action="{% url 'plataforma:cadastroedicao' %}" method="POST" id="cadastroedicao">
             {% csrf_token %}
-            <label for="texto">Texto</label>
+            <label class="admin" for="texto">Texto</label>
             <input type="texto" name="texto" id="texto" placeholder="Digite o texto da edição"  required>
             <input type="submit" value="Cadastrar edição">
             {% if request.GET.next %}

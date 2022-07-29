@@ -11,12 +11,14 @@
 </head>
 <body>
     <div class="center">
+        <ul>
         {% if request.user.colunista %}
-            <li><a href="{% url 'plataforma:logout' %}">Logout</a></li>
-            <li><a href="{% url 'plataforma:cadastroedicao' %}">Cadastrar nova edição</a></li>
+            <p><a class="logout" href="{% url 'plataforma:logout' %}">Logout</a></p>
+            <p><a class="admin" href="{% url 'plataforma:cadastroedicao' %}">Cadastrar nova edição</a></p>
         {% else %}
-            <li><a href="{% url 'plataforma:login' %}">Login</a></li>
+            <a class="login" href="{% url 'plataforma:login' %}">Login</a>
         {% endif %}
+        </ul>
         <h1>EDIÇÕES:</h1>
         {% if edicao_list %}
             <ul>
@@ -33,7 +35,9 @@
         {% else %}
             <p>Nenhuma edicao disponível</p>
         {% endif %}
-        <a href="admin/">Admin</a>
+        <ul>
+        <a class="admin" href="admin/">Admin</a>
+        </ul>
     </div>
 </body>
 </html>

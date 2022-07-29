@@ -10,15 +10,17 @@
 </head>
 <body>
     <div class="center">
+        <ul>
         {% if request.user.colunista %}
-            <li><a href="{% url 'plataforma:logout' %}">Logout</a></li>
+            <a class="logout" href="{% url 'plataforma:logout' %}">Logout</a>
         {% endif %}
-        <li><a href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></li>
+            <p><a class="admin" href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></p>
+        </ul>
         {% if error_message %}
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
         <h1>Edição {{edicao.texto}}</h1>
-        <h5>Colunista autor da edição: {{edicao.colunista.user.username}}</h5>
+        <h4>Colunista autor da edição: {{edicao.colunista.user.username}}</h4>
         <h2><strong>Noticias:</strong></h2>
         <ul>
         {% for noticia in edicao.noticia_set.all %}
@@ -26,9 +28,9 @@
         {% endfor %}
         </ul>
         {% if request.user.colunista %}
-            <li><a href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a></li>
+            <p><a class="admin" href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a></p>
         {% else %}
-            <li><a href="{% url 'plataforma:login'%}">Faça login para cadastrar uma noticia</a></li>
+            <a  class="login" href="{% url 'plataforma:login'%}">Faça login para cadastrar uma noticia</a>
         {% endif %}
     </div>
 

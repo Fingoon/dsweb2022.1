@@ -8,7 +8,9 @@
         <p>Faça login na sua conta</p>
         <form action="{% url 'plataforma:login' %}" method="POST" id="login">
             {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif%}
             <label for="username">Username</label>
             <input type="username" name="username" id="username" placeholder="Digite seu username"  required>
             <label for="senha">Senha</label>

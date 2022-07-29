@@ -10,12 +10,14 @@
 </head>
 <body>
     <div class="center">
-        {% if request.user.colunista %}
-            <p><a class="logout" href="{% url 'plataforma:logout' %}">Logout</a></p>
-        {% endif %}
         <ul>
-        <p><a class="admin" href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></p>
-        <p><a class="admin" href= {% url 'plataforma:detailedicao' noticia.edicao.id %}>Voltar</a></p>
+            {% if request.user.colunista %}
+                <a class="logout" href="{% url 'plataforma:logout' %}">Logout</a>
+            {% else %}
+                <a class="login" href="{% url 'plataforma:login'%}">Login</a>
+            {% endif %}
+            <p><a class="admin" href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></p>
+            <p><a class="admin" href= "{% url 'plataforma:detailedicao' noticia.edicao.id %}">Voltar</a></p>
         </ul>
         <h1>{{ noticia.texto }}</h1>
         <h4>Colunista autor da noticia: {{ noticia.colunista.user.username }}</h4>
@@ -23,17 +25,17 @@
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
         <h2>Comentarios:</h2>
-        <ul>
-        {% for comentario in noticia.comentario_set.all %}
-            <li>{{ comentario.texto }} - Colunista: {{comentario.colunista.user.username}} </li>
-        {% endfor %}
-        </ul>
-        <ul>
-        {% if request.user.colunista %}
-            <p><a class="admin" href="{% url 'plataforma:cadastrocomentario' noticia.id %}">Cadastrar novo comentario</a></p>
+        {% if noticia.comentario_set.all%}
+            <ul>
+            {% for comentario in noticia.comentario_set.all %}
+                <li>{{ comentario.texto }} - Colunista: {{comentario.colunista.user.username}} </li>
+            {% endfor %}
+            </ul>
         {% else %}
-            <p><a class="login" href="{% url 'plataforma:login'%}">Faça login para cadastrar um comentario</a></p>
+            <h4>Nenhum comentario cadastrado para a noticia: {{noticia.texto}}</h4>
         {% endif %}
+        <ul>
+            <p><a class="admin" href="{% url 'plataforma:cadastrocomentario' noticia.id %}">Cadastrar novo comentario</a></p>
         </ul>
     </div>
 </body>

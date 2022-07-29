@@ -20,7 +20,10 @@ class Login(View):
         if user is not None:
             login(request, user)
             if hasattr(request.user, 'colunista'):
-                return HttpResponseRedirect(reverse('plataforma:homejornal'))
+                if 'next' in request.POST:
+                    return redirect(request.POST.get('next'))
+                else:
+                    return HttpResponseRedirect(reverse('plataforma:homejornal'))
         else:
             erro = 'Email e senha inválidas!'
             return render(request, 'plataforma/login.html', {'erro': erro})

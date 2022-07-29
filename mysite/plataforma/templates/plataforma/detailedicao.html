@@ -13,6 +13,8 @@
         <ul>
         {% if request.user.colunista %}
             <a class="logout" href="{% url 'plataforma:logout' %}">Logout</a>
+        {% else %}
+            <a class="login" href="{% url 'plataforma:login' %}">Login</a>
         {% endif %}
             <p><a class="admin" href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></p>
         </ul>
@@ -22,16 +24,16 @@
         <h1>Edição {{edicao.texto}}</h1>
         <h4>Colunista autor da edição: {{edicao.colunista.user.username}}</h4>
         <h2><strong>Noticias:</strong></h2>
-        <ul>
-        {% for noticia in edicao.noticia_set.all %}
-            <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</li>
-        {% endfor %}
-        </ul>
-        {% if request.user.colunista %}
-            <p><a class="admin" href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a></p>
+        {% if edicao.noticia_set.all %}
+            <ul>
+            {% for noticia in edicao.noticia_set.all %}
+                <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</li>
+            {% endfor %}
+            </ul>
         {% else %}
-            <a  class="login" href="{% url 'plataforma:login'%}">Faça login para cadastrar uma noticia</a>
-        {% endif %}
+            <h4>Nenhuma noticia cadastrada na: {{edicao.texto}}!</h4>
+        {% endif%}
+        <p><a class="admin" href="{% url 'plataforma:cadastronoticia' edicao.id %}">Cadastrar nova noticia nesta edição</a></p>
     </div>
 
 </body>

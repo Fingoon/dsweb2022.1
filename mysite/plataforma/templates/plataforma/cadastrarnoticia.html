@@ -11,7 +11,9 @@
             <label for="texto">Texto da noticia</label>
             <input type="texto" name="texto" id="texto" placeholder="Digite o texto da noticia"  required>
             <input type="submit" value="Cadastrar noticia">
-            <input type="hidden" name="next" value="{{ next }}">
+            {% if request.GET.next %}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+            {% endif%}
         </form>
     </div>
     </main>

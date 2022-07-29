@@ -13,11 +13,11 @@
     <div class="center">
         <ul>
         {% if request.user.colunista %}
-            <p><a class="logout" href="{% url 'plataforma:logout' %}">Logout</a></p>
-            <p><a class="admin" href="{% url 'plataforma:cadastroedicao' %}">Cadastrar nova edição</a></p>
+            <a class="logout" href="{% url 'plataforma:logout' %}">Logout</a>
         {% else %}
             <a class="login" href="{% url 'plataforma:login' %}">Login</a>
         {% endif %}
+        <p><a class="admin" href="{% url 'plataforma:cadastroedicao' %}">Cadastrar nova edição</a></p>
         </ul>
         <h1>EDIÇÕES:</h1>
         {% if edicao_list %}
@@ -33,7 +33,7 @@
             {% endfor %}
             </ul>
         {% else %}
-            <p>Nenhuma edicao disponível</p>
+            <h4>Nenhuma edição disponível!</h4>
         {% endif %}
         <ul>
         <a class="admin" href="admin/">Admin</a>

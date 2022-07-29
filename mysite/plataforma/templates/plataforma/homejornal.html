@@ -26,10 +26,8 @@
             </ul>
             <h1>NOTICIAS RECENTES:</h1>
             <ul>
-            {% for edicao in edicao_list %}
-                {% for noticia in edicao.noticia_set.all %}
-                    <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</a></li>
-                {% endfor %}
+            {% for noticia in noticia_list %}
+                <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</a></li>
             {% endfor %}
             </ul>
         {% else %}

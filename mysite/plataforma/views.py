@@ -119,7 +119,8 @@ class CadastroComentario(View):
 
 def homejornal(request):
     edicao_list = Edicao.objects.order_by('-data_pub')[:5]
-    context = {'edicao_list': edicao_list}
+    noticia_list = Noticia.objects.order_by('-data_pub')[:10]
+    context = {'edicao_list': edicao_list,'noticia_list':noticia_list}
     return render(request,'plataforma/homejornal.html', context)
 
 def detailedicao(request, edicao_id):

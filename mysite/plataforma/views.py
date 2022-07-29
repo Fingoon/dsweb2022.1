@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from .models import Colunista, Edicao,Noticia,Comentario
 from django.utils.decorators import method_decorator
@@ -103,7 +103,7 @@ class CadastroComentario(View):
     def post(self, request, noticia_id, *args, **kwargs):
         texto = request.POST['texto']
         noticia = get_object_or_404(Noticia, pk=noticia_id)
-    
+
         if texto:
             if hasattr(request.user, 'colunista'):
                 comentario = Comentario(colunista=request.user.colunista, texto = texto, noticia = noticia)
@@ -115,7 +115,7 @@ class CadastroComentario(View):
         else:
             erro = 'Informe corretamente os parâmetros necessários!'
             return render(request, 'plataforma/cadastrarcomentario.html', {'erro': erro})
-    
+
 
 def homejornal(request):
     edicao_list = Edicao.objects.order_by('-data_pub')[:5]

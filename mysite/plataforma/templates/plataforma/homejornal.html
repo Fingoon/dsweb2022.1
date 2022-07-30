@@ -13,7 +13,7 @@
     <div class="center">
         <ul>
         {% if request.user.colunista %}
-            <a class="logout" href="{% url 'plataforma:logout' %}">Logout</a>
+            <a class="logout" href="{% url 'plataforma:logout' %}">Logout ({{request.user.username}})</a>
         {% else %}
             <a class="login" href="{% url 'plataforma:login' %}">Login</a>
         {% endif %}
@@ -24,7 +24,7 @@
             {% if ultima_edicao %}
                 <ul>
                 {% for edicao in ultima_edicao %}
-                    <li><a href="{% url 'plataforma:detailedicao' edicao.id %}">{{ edicao.texto }}</a></li>
+                    <li><a style="color:red" href="{% url 'plataforma:detailedicao' edicao.id %}">{{ edicao.texto }}</a></li>
                 {% endfor %}
                 </ul>
             {% endif %}
@@ -41,7 +41,7 @@
             <h1>NOTICIAS RECENTES:</h1>
             <ul>
             {% for noticia in noticia_list %}
-                <li><a href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</a></li>
+                <li><a class="noticia" href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</a></li>
             {% endfor %}
             </ul>
         {% else %}

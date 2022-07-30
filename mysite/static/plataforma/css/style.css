@@ -22,8 +22,8 @@ h2{
     border-style: ridge;
     height: 200vh;
     text-align:center;
-    max-width: 550px;
-    max-height: 800px;
+    max-width: 600px;
+    max-height: 900px;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -33,12 +33,13 @@ h2{
 }
 
 ul{
-    font-size: 19px;
+    font-size: 15px;
     text-align: left;
     padding-inline-start: 0px;
 }
 
 li{
+    font-size: 20px;
     text-align: center;
 }
 
@@ -61,3 +62,22 @@ li{
     font-size: 25px;
     text-align: left;
 }
+.comentario{
+    color: rgb(244, 76, 0);
+    font-size: 22px;
+    text-align: left;
+}
+.noticia{
+    color: rgb(255, 255, 0);
+    font-size: 22px;
+    text-align: left;
+}
+div{
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+

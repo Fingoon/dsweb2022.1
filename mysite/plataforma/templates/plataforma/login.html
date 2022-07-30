@@ -11,10 +11,14 @@
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
             {% endif%}
+            <div>
             <label class="admin" for="username">Username</label>
             <input type="username" name="username" id="username" placeholder="Digite seu username"  required>
+            </div>
+            <div>
             <label class="admin" for="senha">Senha</label>
             <input type="password" name="senha" id="senha" placeholder="Digite sua senha"  required>
+            </div>
             <input type="submit" value="Entrar">
         </form>
         <p class="admin">Não tem uma conta? <a href="{%url 'plataforma:cadastrocolunista'%}">Cadastrar-se</a></p>

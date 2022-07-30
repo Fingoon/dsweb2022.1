@@ -12,7 +12,7 @@
     <div class="center">
         <ul>
             {% if request.user.colunista %}
-                <a class="logout" href="{% url 'plataforma:logout' %}">Logout</a>
+                <a class="logout" href="{% url 'plataforma:logout' %}">Logout ({{request.user.username}})</a>
             {% else %}
                 <a class="login" href="{% url 'plataforma:login'%}">Login</a>
             {% endif %}
@@ -24,18 +24,18 @@
         {% if error_message %}
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
-        <h2>Comentarios:</h2>
+        <h2>COMENTARIOS:</h2>
         {% if noticia.comentario_set.all%}
             <ul>
             {% for comentario in noticia.comentario_set.all %}
-                <li>{{ comentario.texto }} - Colunista: {{comentario.colunista.user.username}} </li>
+                <li class="comentario">{{ comentario.texto }}. ~ ({{comentario.colunista.user.username}})</li>
             {% endfor %}
             </ul>
         {% else %}
             <h4>Nenhum comentario cadastrado para a noticia: {{noticia.texto}}</h4>
         {% endif %}
         <ul>
-            <p><a class="admin" href="{% url 'plataforma:cadastrocomentario' noticia.id %}">Cadastrar novo comentario</a></p>
+            <p><a class="admin" href="{% url 'plataforma:cadastrocomentario' noticia.id %}">Comentar</a></p>
         </ul>
     </div>
 </body>

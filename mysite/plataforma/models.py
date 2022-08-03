@@ -25,6 +25,7 @@ class Edicao(models.Model):
 
 class Noticia(models.Model):
     colunista = models.ForeignKey(Colunista, on_delete=models.CASCADE)
+    titulo = models.CharField(max_length=500)
     texto = models.CharField(max_length=500)
     edicao = models.ForeignKey(Edicao, on_delete=models.CASCADE)
     data_pub = models.DateTimeField(auto_now_add=True)

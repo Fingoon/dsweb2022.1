@@ -41,7 +41,7 @@
             <h1>NOTICIAS RECENTES:</h1>
             <ul>
             {% for noticia in noticia_list %}
-                <li><a class="noticia" href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.texto }}</a></li>
+                <li><a class="noticia" href="{% url 'plataforma:detailnoticia' noticia.id %}">{{ noticia.titulo }}</a></li>
             {% endfor %}
             </ul>
         {% else %}

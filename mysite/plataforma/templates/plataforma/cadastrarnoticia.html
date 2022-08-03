@@ -8,8 +8,14 @@
         <p class="admin">Cadastre uma noticia na edição {{edicao.texto}}</p>
         <form action="{% url 'plataforma:cadastronoticia' edicao.id %}" method="POST" id="cadastronoticia">
             {% csrf_token %}
+            <div>
+            <label class="admin" for="titulo">Titulo da noticia</label>
+            <input type="titulo" name="titulo" id="titulo" placeholder="Digite o titulo da noticia"  required>
+            </div>
+            <div>
             <label class="admin" for="texto">Texto da noticia</label>
             <input type="texto" name="texto" id="texto" placeholder="Digite o texto da noticia"  required>
+            </div>
             <input type="submit" value="Cadastrar noticia">
             {% if request.GET.next %}
                 <input type="hidden" name="next" value="{{ request.GET.next }}">

@@ -5,7 +5,7 @@
 <body>
     <main>
         <div class="center">
-        <p class="admin">Cadastre um comentario na noticia: {{noticia.texto}}</p>
+        <p class="admin">Cadastre um comentario na noticia: {{noticia.titulo}}</p>
         <form action="{% url 'plataforma:cadastrocomentario' noticia.id %}" method="POST" id="cadastrocomentario">
             {% csrf_token %}
             <label class="admin" for="texto">Comentario:</label>

@@ -80,12 +80,13 @@ class CadastroNoticia(View):
         return render(request, 'plataforma/cadastrarnoticia.html', contexto)
 
     def post(self, request, edicao_id, *args, **kwargs):
+        titulo = request.POST['titulo']
         texto = request.POST['texto']
         edicao = get_object_or_404(Edicao, pk=edicao_id)
 
         if texto:
             if hasattr(request.user, 'colunista'):
-                noticia = Noticia(colunista=request.user.colunista, texto = texto, edicao = edicao)
+                noticia = Noticia(colunista=request.user.colunista, texto = texto, edicao = edicao, titulo = titulo)
                 noticia.save()
                 return HttpResponseRedirect(reverse('plataforma:detailedicao', args=(edicao_id,)))
             else:

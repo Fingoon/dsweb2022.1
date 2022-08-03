@@ -19,12 +19,13 @@
             <p><a class="admin" href= "{% url 'plataforma:homejornal' %}">Pagina principal</a></p>
             <p><a class="admin" href= "{% url 'plataforma:detailedicao' noticia.edicao.id %}">Voltar</a></p>
         </ul>
-        <h1>{{ noticia.texto }}</h1>
-        <h4>Colunista autor da noticia: {{ noticia.colunista.user.username }}</h4>
+        <h1 style="font-family:'verdana'">{{ noticia.titulo }}</h1>
+        <h4 style="color:rgb(241, 122, 25)" >{{ noticia.texto }}</h4>
+        <h4 style="color:rgb(241, 61, 25)" >Colunista autor da noticia: {{ noticia.colunista.user.username }}</h4>
         {% if error_message %}
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
-        <h2>COMENTARIOS:</h2>
+        <h2 style="color:rgb(243, 196, 126)">COMENTARIOS:</h2>
         {% if noticia.comentario_set.all%}
             <ul>
             {% for comentario in noticia.comentario_set.all %}

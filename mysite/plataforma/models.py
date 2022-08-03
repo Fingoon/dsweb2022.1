@@ -10,7 +10,7 @@ class Colunista(models.Model):
         verbose_name_plural = 'Colunistas'
 
     def __str__(self):
-        return f"Nome: {self.user.username} - CPF: {self.cpf} "    
+        return f"Nome: {self.user.username} - CPF: {self.cpf} "
 
 class Edicao(models.Model):
     colunista = models.ForeignKey(Colunista, on_delete=models.CASCADE)
@@ -34,7 +34,7 @@ class Noticia(models.Model):
         verbose_name_plural = 'Noticias'
 
     def __str__(self):
-            return ("{0} - {1}").format(self.edicao.texto, self.texto)
+            return ("{0} - {1}").format(self.edicao.titulo, self.titulo)
 
 class Comentario(models.Model):
     colunista = models.ForeignKey(Colunista, on_delete=models.CASCADE)
@@ -42,7 +42,7 @@ class Comentario(models.Model):
     noticia = models.ForeignKey(Noticia, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name_plural = 'Comentarios'  
+        verbose_name_plural = 'Comentarios'
 
     def __str__(self):
-            return ("{0} - {1}").format(self.noticia.texto, self.texto)   
+            return ("{0} - {1}").format(self.noticia.texto, self.texto)

@@ -120,6 +120,25 @@ class CadastroComentario(View):
             erro = 'Informe corretamente os parâmetros necessários!'
             return render(request, 'plataforma/cadastrarcomentario.html', {'erro': erro})
 
+def deletaredicao(request, edicao_id):
+    edicao = get_object_or_404(Edicao, pk=edicao_id)
+    if request.user == edicao.colunista.user:
+        edicao.delete()
+    return HttpResponseRedirect(reverse('plataforma:homejornal'))
+
+def deletarnoticia(request, noticia_id):
+    noticia = get_object_or_404(Noticia, pk=noticia_id)
+    edicao = noticia.edicao
+    if request.user == noticia.colunista.user:
+        noticia.delete()
+    return render(request,'plataforma/detailedicao.html',{'edicao': edicao})
+
+def deletarcomentario(request, comentario_id):
+    comentario = get_object_or_404(Comentario, pk=comentario_id)
+    noticia = comentario.noticia
+    if request.user == comentario.colunista.user:
+        comentario.delete()
+    return render(request,'plataforma/detailnoticia.html',{'noticia': noticia})  
 
 def homejornal(request):
     edicao_list = Edicao.objects.order_by('-data_pub')[:5]

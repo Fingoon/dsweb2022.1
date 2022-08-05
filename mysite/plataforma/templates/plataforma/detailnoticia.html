@@ -20,6 +20,9 @@
             <p><a class="admin" href= "{% url 'plataforma:detailedicao' noticia.edicao.id %}">Voltar</a></p>
         </ul>
         <h1 style="font-family:'verdana'">{{ noticia.titulo }}</h1>
+        {% if request.user == noticia.colunista.user %}
+            <button class="button"><a style="color:rgb(255, 255, 255)"href="{% url 'plataforma:deletarnoticia' noticia.id %}">Excluir noticia</a></button>
+        {% endif%}
         <h4 style="color:rgb(241, 122, 25)" >{{ noticia.texto }}</h4>
         <h4 style="color:rgb(241, 61, 25)" >Colunista autor da noticia: {{ noticia.colunista.user.username }}</h4>
         {% if error_message %}
@@ -29,7 +32,12 @@
         {% if noticia.comentario_set.all%}
             <ul>
             {% for comentario in noticia.comentario_set.all %}
-                <li class="comentario">{{ comentario.texto }}. ~ ({{comentario.colunista.user.username}})</li>
+                {% if request.user == comentario.colunista.user %}
+                    <li class="comentario">{{ comentario.texto }}. ~ ({{comentario.colunista.user.username}})
+                    </li><button class="button"><a style="color:rgb(255, 255, 255)"href="{% url 'plataforma:deletarcomentario' comentario.id %}">Excluir comentario</a></button>    
+                {% else %}
+                    <li class="comentario">{{ comentario.texto }}. ~ ({{comentario.colunista.user.username}})</li>
+                {% endif%}
             {% endfor %}
             </ul>
         {% else %}

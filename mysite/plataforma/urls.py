@@ -8,6 +8,9 @@ urlpatterns = [
     path('cadastronoticia/<int:edicao_id>/', views.CadastroNoticia.as_view(), name='cadastronoticia'),
     path('edicao/<int:edicao_id>/', views.detailedicao, name='detailedicao'),
     path('edicao/noticia/<int:noticia_id>/', views.detailnoticia, name='detailnoticia'),
+    path('edicao/<int:edicao_id>/deletaredicao/', views.deletaredicao, name='deletaredicao'),
+    path('edicao/noticia/<int:noticia_id>/deletarnoticia/', views.deletarnoticia, name='deletarnoticia'),
+    path('edicao/noticia/comentario/<int:comentario_id>/deletarcomentario/', views.deletarcomentario, name='deletarcomentario'),
 
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.logoutView, name='logout'),

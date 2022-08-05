@@ -22,6 +22,9 @@
             <p><strong>{{ error_message }}</strong></p>
         {% endif %}
         <h1>Edição {{edicao.texto}}</h1>
+        {% if request.user == edicao.colunista.user %}
+            <button class="button"><a style="color:rgb(255, 255, 255)" href="{% url 'plataforma:deletaredicao' edicao.id %}">Excluir edição</a></button>
+        {% endif%}
         <h4>Colunista autor da edição: {{edicao.colunista.user.username}}</h4>
         <h2><strong>NOTICIAS:</strong></h2>
         {% if edicao.noticia_set.all %}

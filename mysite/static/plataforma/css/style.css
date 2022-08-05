@@ -79,5 +79,17 @@ div{
     justify-content: center;
     flex-direction: column;
 }
+.button {
+    background-color: #f52222; 
+    border: solid;
+    color: rgb(11, 1, 1);
+    padding: 2px 2px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+
 
 
